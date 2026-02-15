@@ -168,10 +168,16 @@ export const useWebRTC = ({ roomId, serverUrl }: UseWebRTCProps): UseWebRTCRetur
         });
 
         socket.on('other-user', (userId: string) => {
-          console.log('Other user in room:', userId);
+          console.log('Other user already in room:', userId);
+          setOtherUserId(userId);
+          // Don't create offer here - wait for the other user to initiate via 'user-joined'
+        });
+
+        socket.on('user-joined', (userId: string) => {
+          console.log('User joined room:', userId);
           setOtherUserId(userId);
           
-          // Create peer connection and send offer
+          // Create peer connection and send offer only when someone joins (we're the first one)
           const pc = createPeerConnection(socket, userId);
           
           // Create and send offer
@@ -186,11 +192,6 @@ export const useWebRTC = ({ roomId, serverUrl }: UseWebRTCProps): UseWebRTCRetur
             .catch(err => {
               console.error('Error creating offer:', err);
             });
-        });
-
-        socket.on('user-joined', (userId: string) => {
-          console.log('User joined:', userId);
-          setOtherUserId(userId);
         });
 
         socket.on('offer', async (data: { sender: string; offer: RTCSessionDescriptionInit }) => {

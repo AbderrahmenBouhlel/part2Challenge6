@@ -255,7 +255,11 @@ function App() {
                       <Users className="w-12 h-12 text-slate-500" />
                     </div>
                     <p className="text-slate-400 text-lg">
-                      {isConnecting ? 'Waiting for other participant...' : 'No one else in the room'}
+                      {otherUserId 
+                        ? isConnecting 
+                          ? 'Establishing connection...' 
+                          : 'Connection established' 
+                        : 'Waiting for other participant...'}
                     </p>
                     <p className="text-slate-500 text-sm mt-2">
                       Share Room ID: <span className="text-blue-400 font-mono">{joinedRoom}</span>
