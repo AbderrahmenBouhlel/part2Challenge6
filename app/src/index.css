@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: "Space Grotesk", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --bg-0: #0b0f1e;
+  --bg-1: #0f172a;
+  --bg-2: #111827;
+  --accent-1: #4f46e5;
+  --accent-2: #22d3ee;
+  --accent-3: #f97316;
+  --glow: rgba(79, 70, 229, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-0);
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(79, 70, 229, 0.2), transparent 40%),
+    radial-gradient(circle at 85% 5%, rgba(34, 211, 238, 0.16), transparent 45%),
+    radial-gradient(circle at 20% 90%, rgba(249, 115, 22, 0.12), transparent 35%);
+  color: #e2e8f0;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
